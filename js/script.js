@@ -19,6 +19,9 @@ $.ajax({
     console.log(apiResponce)
     var pokename = $('<h5>').text(apiResponce.name)
     console.log(pokename)
+    console.log(apiResponce.sprites.other['official-artwork'].front_default)
+    var sprite = $('<img>').attr("src",apiResponce.sprites.other['official-artwork'].front_default)
+
     
     for (let i = 0; i < apiResponce.moves.length; i++) {
         console.log("hello")
@@ -29,6 +32,6 @@ $.ajax({
 
     //var moves = $('<h3>').text(apiResponce.moves.move.name)
     //console.log(moves)
-    $('#nameofpoke').append(pokename)
+    $('#nameofpoke').append(pokename,sprite)
 })
 }
