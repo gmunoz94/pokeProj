@@ -12,7 +12,7 @@
     <script type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+    <link rel="stylesheet" href="./css/style.css">
     <title>PokeBuilder</title>
 </head>
 <body>
@@ -37,8 +37,9 @@
             <div class="column">
             <div class="field">
                 <div class="control is-large is-flex flex-direction-row">
-                  <input class="input is-large m-2" type="text" placeholder="Name your Pokemon">
-                  <button class="button is-large m-2">Continue</button>
+                  <input class="input is-large m-2" type="text" placeholder="Name your Pokemon" id="nickname">
+                  <button class="button is-large m-2" id="searchbtn2">Check nickname</button>
+                  <button class="button is-large m-2" id="finalbtn">Continue</button>
                 </div>
             </div>
             </div>
@@ -50,11 +51,14 @@
     <div class="section is-medium">
     <div class="columns">
         <div class="column is-two-fifths"></div>
-        <div class="column" id="pokeImg"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"></div>
+        <div class="column has-text-centered">
+            <h3 id="pokenick"></h3>
+            <img id="pokeImg" src=""/>
+        </div>
         <div class="column is-two-fifths"></div>
     </div>
     </div>
     </div>  
-    <script src="/pokeProj/js/build.js"></script>
+    <script src="./js/build.js"></script>
 </body>
 </html>

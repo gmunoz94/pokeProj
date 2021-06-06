@@ -6,6 +6,7 @@ function inputval() {
     pokename(search);
     console.log(search);
     document.querySelector("#pokeSearch").value = "";
+
 }
 
 document.querySelector("#choosebtn").addEventListener("click",inputval)
@@ -17,25 +18,19 @@ $.ajax({
 }).then(function(apiResponce){
     console.log(apiResponce)
     var pokename = apiResponce.name
+    $('#pokename').text("");
     $('#pokename').append(pokename)
     console.log(pokename)
     console.log(apiResponce.sprites.other['official-artwork'].front_default)
-    var sprite = $('<img>').attr("src",apiResponce.sprites.other['official-artwork'].front_default)
-    $('#pokeImg').append(sprite)
-    /*for (let i = 0; i < apiResponce.moves.length; i++) {
-        var moves = $('<h3>').text(apiResponce.moves[i].move.name)
-        $('#nameofpoke').append(moves)
-        console.log(moves)
-    }*/
-    //var moves = $('<h3>').text(apiResponce.moves.move.name)
-    //console.log(moves)
-    //$('#nameofpoke').append(pokename,sprite)
+    var sprite = $('#pokeImg')
+    sprite.attr("src",apiResponce.sprites.other['official-artwork'].front_default)
 })
 }
 
 
 function nextPage() {
-    location.href = './choose.html' + searchpoke
+    var chosen = document.getElementById('pokename')
+    location.href = './build.html?name=' + chosen.textContent
 }
 
 
