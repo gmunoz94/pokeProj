@@ -20,10 +20,6 @@ function pokename(search) {
    }
 
 
-
-
-
-
 function nickval() {
     var nickname = document.querySelector("#nickname").value;
     givename(nickname);
@@ -46,9 +42,16 @@ function givename(nickname) {
         }
         else {
            console.log("no no word")
-           alert("Watch yo profanity")
+        //    alert("Watch yo profanity")
+           $('.modal').addClass('is-active')
         }
    })
 }
 
 init()
+
+var closeModal = document.getElementById('closeBtn')
+
+closeModal.addEventListener('click', () => {
+    $('.modal').removeClass('is-active')
+})
