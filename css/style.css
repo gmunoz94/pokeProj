@@ -21,3 +21,14 @@ h3 {
 * html .ui-autocomplete {
     height: 100px;
 }
+
+.pokeImg {
+    height: 75px;
+    width: 75px;
+}
+
+.nickname {
+    font-size: 40px;
+    line-height: 75px;
+    color: white;
+}

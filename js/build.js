@@ -1,6 +1,17 @@
+const urlParams = new URL(document.location).searchParams
+var search = urlParams.get('name')
+
 function init() {
-    const urlParams = new URL(document.location).searchParams
-    var search = urlParams.get('name')
+    if (localStorage.getItem('nickname') != null && localStorage.getItem('pokemonSpecies') != null) {
+        console.log(localStorage.getItem('nickname'))
+        console.log(localStorage.getItem('pokemonSpecies'))
+        var storedName = localStorage.getItem('nickname')
+        var storedSpecies = localStorage.getItem('pokemonSpecies')
+        console.log(storedName)
+        console.log(storedSpecies)
+        nameArray = JSON.parse(storedName);
+        pokemonArray = JSON.parse(storedSpecies);
+    }
     pokename(search)
 }
 
@@ -38,6 +49,7 @@ function givename(nickname) {
        console.log(response)
        if(response == "false"){
            console.log("hello")
+           $('#pokenick').text("")
            $('#pokenick').append(nickname)
         }
         else {
@@ -48,6 +60,7 @@ function givename(nickname) {
    })
 }
 
+
 init()
 
 var closeModal = document.getElementById('closeBtn')
@@ -55,3 +68,20 @@ var closeModal = document.getElementById('closeBtn')
 closeModal.addEventListener('click', () => {
     $('.modal').removeClass('is-active')
 })
+
+document.querySelector("#finalbtn").addEventListener("click",logName)
+
+
+var pokemonSpecies;
+
+function logName() {
+            pokemonSpecies = search;
+            pokemonName = document.querySelector('#pokenick')
+            console.log(pokemonName.textContent)
+            pokemonArray.push(pokemonSpecies);
+            nameArray.push(pokemonName.textContent)
+
+            localStorage.setItem('nickname', JSON.stringify(nameArray))
+            localStorage.setItem('pokemonSpecies', JSON.stringify(pokemonArray));
+            console.log(JSON.stringify(localStorage)); 
+}
