@@ -13,7 +13,7 @@
     <nav class="navbar is-dark has-shadow">
         <!-- logo/brand -->
         <div class="navbar-brand">
-            <a class="navbar-item">
+            <a href="index.html" class="navbar-item">
                 <img src="./images/pokeball.png" alt="logo" style="max-height: 50px" class="py-2 px-2">
                 PokeBuilder
             </a>
@@ -29,10 +29,10 @@
             <div class="column is-one-fifth"></div>
             <div class="column">
             <div class="field">
-                <div class="control is-large is-flex flex-direction-row">
+                <div class="control is-large is-flex flex-direction-row ui-widget">
                   <input class="input is-large m-2" type="text" placeholder="Choose your Pokemon" id="pokeSearch">
                   <button class="button is-large m-2" id="choosebtn">Choose</button>
-                  <button class="button is-large m-2" id="searchbtn">Continue</button>
+                  <input type="submit" class="button is-large m-2" id="searchbtn"></input>
                 </div>
             </div>
             </div>
@@ -43,9 +43,9 @@
     <div class="section is-medium">
         <div class="columns">
         <div class="column is-two-fifths"></div>
-        <div class="column has-text-centered" id="pokeImg">
+        <div class="column has-text-centered">
                 <h3 id="pokename"></h3>
-                
+                <img id="pokeImg"/>
         </div>
         <div class="column is-two-fifths"></div>
     </div>

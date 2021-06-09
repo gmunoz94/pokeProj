@@ -5,3 +5,30 @@ h3 {
 #searchCard:hover {
     background-color: aqua;
 }
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 500px;
+    border: black solid 1px;
+}
+
+* html .ui-autocomplete {
+    height: 100px;
+}
+
+.pokeImg {
+    height: 75px;
+    width: 75px;
+}
+
+.nickname {
+    font-size: 40px;
+    line-height: 75px;
+    color: white;
+}
