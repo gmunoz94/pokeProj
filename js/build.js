@@ -11,6 +11,9 @@ function init() {
         console.log(storedSpecies)
         nameArray = JSON.parse(storedName);
         pokemonArray = JSON.parse(storedSpecies);
+    } else {
+        pokemonArray = []
+        nameArray = []
     }
     pokename(search)
 }
