@@ -26,7 +26,7 @@ $.ajax({
 
     
     for (let i = 0; i < apiResponce.moves.length; i++) {
-        var moves = $('<h3>').text(apiResponce.moves[i].move.name)
+        var moves = $('<button>').text(apiResponce.moves[i].move.name).attr("id",apiResponce.moves[i].move.name)
         $('#nameofpoke').append(moves)
         console.log(moves)
     }
@@ -36,10 +36,25 @@ $.ajax({
     //$('#nameofpoke').append(pokename,sprite)
 })
 }
-
-function movestats(movesSel) {
+var moveSel = $('button').text()
+function movestats(moveSel) {
     var urlAPI = `https://pokeapi.co/api/v2/move/${moveSel}/`
-    $.ajax({})
+    $.ajax({
+        url:urlAPI,
+        method:"GET"
+    })
+    .then(function(response){
+        var moveName = response.name
+        var moveAcc = response.accuracy
+        var movePP = response.pp
+        var movePower = response.power
+
+
+    }
+        
+
+
+    )
 }
 
 function nickval() {
