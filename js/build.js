@@ -18,7 +18,7 @@ function init() {
     pokename(search)
 }
 
-
+var spritecont
 
 function pokename(search) {
     var endpointURL = `https://pokeapi.co/api/v2/pokemon/${search}`
@@ -28,10 +28,32 @@ function pokename(search) {
    }).then(function(apiResponce){
        console.log(apiResponce)
        console.log(apiResponce.sprites.other['official-artwork'].front_default)
+       spritecont = apiResponce.sprites.other['official-artwork'].front_default
        var sprite = $('#pokeImg')
        sprite.attr("src",apiResponce.sprites.other['official-artwork'].front_default)
+       for (let i = 0; i < apiResponce.moves.length; i++) {
+           var moveName = $('<div>').text(apiResponce.moves[i].move.name).addClass("dropdown-item")
+           $('#dropList').append(moveName)
+           console.log(moveName)
+       }
    })
-   }
+}
+
+
+function movestats(moveSel) {
+    var urlAPI = `https://pokeapi.co/api/v2/move/${moveSel}/`
+    $.ajax({
+        url:urlAPI,
+        method:"GET"
+    })
+    .then(function(response){
+        var moveName = response.name
+        var moveAcc = response.accuracy
+        var movePP = response.pp
+        var movePower = response.power
+    }
+    )
+}
 
 
 function nickval() {
@@ -42,6 +64,7 @@ function nickval() {
 }
 
 document.querySelector("#searchbtn2").addEventListener("click",nickval)
+
 function givename(nickname) {
     var profanityURL = `https://www.purgomalum.com/service/containsprofanity?text=${nickname}`
    $.ajax({
@@ -63,28 +86,32 @@ function givename(nickname) {
    })
 }
 
-
 init()
 
 var closeModal = document.getElementById('closeBtn')
-
 closeModal.addEventListener('click', () => {
     $('.modal').removeClass('is-active')
 })
 
 document.querySelector("#finalbtn").addEventListener("click",logName)
 
-
 var pokemonSpecies;
 
 function logName() {
             pokemonSpecies = search;
-            pokemonName = document.querySelector('#pokenick')
-            console.log(pokemonName.textContent)
-            pokemonArray.push(pokemonSpecies);
-            nameArray.push(pokemonName.textContent)
-
-            localStorage.setItem('nickname', JSON.stringify(nameArray))
-            localStorage.setItem('pokemonSpecies', JSON.stringify(pokemonArray));
-            console.log(JSON.stringify(localStorage)); 
+            pokemonName = document.querySelector('#pokenick').textContent
+            var existingEntries = JSON.parse(localStorage.getItem('pokemons'));
+            if(existingEntries == null) existingEntries = []
+            var pokemon99 = {name:pokemonSpecies,nick:pokemonName,picture:spritecont}
+            console.log(pokemon99)
+            localStorage.setItem('currentpoke',JSON.stringify(pokemon99))
+            existingEntries.push(pokemon99)
+            localStorage.setItem('pokemons',JSON.stringify(existingEntries))  
+            console.log(localStorage.getItem('pokemons'))     
+            var parsed = JSON.parse(localStorage.getItem('pokemons'))
+            console.log(parsed)
 }
+
+$('#dropBtn').on('click', function() {
+    $('.dropdown').toggleClass('is-active')    
+})

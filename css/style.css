@@ -32,3 +32,24 @@ h3 {
     line-height: 75px;
     color: white;
 }
+
+.dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100px;
+    border: black solid 1px;
+}
+
+.card {
+    width: 300px;
+}
+
+.card-footer {
+    position: absolute;
+    bottom: 0;
+}
+
+span {
+    font-size: 30px;
+}
