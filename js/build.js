@@ -1,25 +1,6 @@
 const urlParams = new URL(document.location).searchParams
 var search = urlParams.get('name')
-
-function init() {
-    if (localStorage.getItem('nickname') != null && localStorage.getItem('pokemonSpecies') != null) {
-        console.log(localStorage.getItem('nickname'))
-        console.log(localStorage.getItem('pokemonSpecies'))
-        var storedName = localStorage.getItem('nickname')
-        var storedSpecies = localStorage.getItem('pokemonSpecies')
-        console.log(storedName)
-        console.log(storedSpecies)
-        nameArray = JSON.parse(storedName);
-        pokemonArray = JSON.parse(storedSpecies);
-    } else {
-        pokemonArray = []
-        nameArray = []
-    }
-    pokename(search)
-}
-
 var spritecont
-
 function pokename(search) {
     var endpointURL = `https://pokeapi.co/api/v2/pokemon/${search}`
    $.ajax({
@@ -29,42 +10,109 @@ function pokename(search) {
        console.log(apiResponce)
        console.log(apiResponce.sprites.other['official-artwork'].front_default)
        spritecont = apiResponce.sprites.other['official-artwork'].front_default
-       var sprite = $('#pokeImg')
+       var sprite = $('#buildImg')
        sprite.attr("src",apiResponce.sprites.other['official-artwork'].front_default)
        for (let i = 0; i < apiResponce.moves.length; i++) {
            var moveName = $('<div>').text(apiResponce.moves[i].move.name).addClass("dropdown-item")
            $('#dropList').append(moveName)
            console.log(moveName)
-       }
+    }
    })
 }
-
-
-function movestats(moveSel) {
-    var urlAPI = `https://pokeapi.co/api/v2/move/${moveSel}/`
-    $.ajax({
-        url:urlAPI,
-        method:"GET"
-    })
-    .then(function(response){
-        var moveName = response.name
-        var moveAcc = response.accuracy
-        var movePP = response.pp
-        var movePower = response.power
+$('#dropList').click(function(event){
+    $('#moveName').html('')
+    $('#moveAcc').html('')
+    $('#movePP').html('')
+    $('#movePower').html('')
+    $('.dropdown').toggleClass('is-active')   
+    var element = event.target
+    // $('#moveName').append('move: ' + element.textContent)
+    var moveSel = element.textContent
+    movestats(moveSel)
+    function movestats(moveSel) {
+        var urlAPI = `https://pokeapi.co/api/v2/move/${moveSel}/`
+        $.ajax({
+            url:urlAPI,
+            method:"GET"
+        })
+        .then(function(response){
+            var moveName = response.name
+            var moveAcc = response.accuracy
+            var movePP = response.pp
+            var movePower = response.power
+            $('#moveName').append('Name: ' + moveName)
+            $('#moveAcc').append('Accuracy: ' + moveAcc)
+            $('#movePP').append('PP: ' + movePP)
+            $('#movePower').append('Power: ' + movePower)
+            console.log(moveAcc)
+        }     
+       )
     }
-    )
-}
-
-
+});
+var fullmove1 = [] 
+$('#setmove1').on('click',function(){
+    $('#move1').html('')
+    var setName = $('<h4>').text($('#moveName').text())
+    var setAcc = $('<p>').text($('#moveAcc').text())
+    var setPP = $('<p>').text($('#movePP').text())
+    var setPower = $('<p>').text($('#movePower').text())
+    $('#move1').append(setName)
+    $('#move1').append(setAcc)
+    $('#move1').append(setPP)
+    $('#move1').append(setPower)
+    console.log($('#moveName').text())
+    fullmove1 = [setName.text(),setAcc.text(),setPP.text(),setPower.text()]
+})
+var fullmove2 = []
+$('#setmove2').on('click',function(){
+    $('#move2').html('')
+    var setName = $('<h4>').text($('#moveName').text())
+    var setAcc = $('<p>').text($('#moveAcc').text())
+    var setPP = $('<p>').text($('#movePP').text())
+    var setPower = $('<p>').text($('#movePower').text())
+    $('#move2').append(setName)
+    $('#move2').append(setAcc)
+    $('#move2').append(setPP)
+    $('#move2').append(setPower)
+    console.log($('#moveName').text())
+    fullmove2 = [setName.text(),setAcc.text(),setPP.text(),setPower.text()]
+})
+var fullmove3 = []
+$('#setmove3').on('click',function(){
+    $('#move3').html('')
+    var setName = $('<h4>').text($('#moveName').text())
+    var setAcc = $('<p>').text($('#moveAcc').text())
+    var setPP = $('<p>').text($('#movePP').text())
+    var setPower = $('<p>').text($('#movePower').text())
+    $('#move3').append(setName)
+    $('#move3').append(setAcc)
+    $('#move3').append(setPP)
+    $('#move3').append(setPower)
+    console.log($('#moveName').text())
+    fullmove3 = [setName.text(),setAcc.text(),setPP.text(),setPower.text()]
+})
+var fullmove4 = []
+$('#setmove4').on('click',function(){
+    $('#move4').html('')
+    var setName = $('<h4>').text($('#moveName').text())
+    var setAcc = $('<p>').text($('#moveAcc').text())
+    var setPP = $('<p>').text($('#movePP').text())
+    var setPower = $('<p>').text($('#movePower').text())
+    $('#move4').append(setName)
+    $('#move4').append(setAcc)
+    $('#move4').append(setPP)
+    $('#move4').append(setPower)
+    console.log($('#moveName').text())
+    fullmove4 = [setName.text(),setAcc.text(),setPP.text(),setPower.text()]
+    console.log(fullmove4)
+})
 function nickval() {
     var nickname = document.querySelector("#nickname").value;
     givename(nickname);
     console.log(nickname);
     document.querySelector("#nickname").value = "";
 }
-
 document.querySelector("#searchbtn2").addEventListener("click",nickval)
-
 function givename(nickname) {
     var profanityURL = `https://www.purgomalum.com/service/containsprofanity?text=${nickname}`
    $.ajax({
@@ -85,24 +133,19 @@ function givename(nickname) {
         }
    })
 }
-
-init()
-
+pokename(search)
 var closeModal = document.getElementById('closeBtn')
 closeModal.addEventListener('click', () => {
     $('.modal').removeClass('is-active')
 })
-
 document.querySelector("#finalbtn").addEventListener("click",logName)
-
 var pokemonSpecies;
-
 function logName() {
             pokemonSpecies = search;
             pokemonName = document.querySelector('#pokenick').textContent
             var existingEntries = JSON.parse(localStorage.getItem('pokemons'));
             if(existingEntries == null) existingEntries = []
-            var pokemon99 = {name:pokemonSpecies,nick:pokemonName,picture:spritecont}
+            var pokemon99 = {name:pokemonSpecies,nick:pokemonName,picture:spritecont,ability1:fullmove1,ability2:fullmove2,ability3:fullmove3,ability4:fullmove4}
             console.log(pokemon99)
             localStorage.setItem('currentpoke',JSON.stringify(pokemon99))
             existingEntries.push(pokemon99)
@@ -111,7 +154,6 @@ function logName() {
             var parsed = JSON.parse(localStorage.getItem('pokemons'))
             console.log(parsed)
 }
-
 $('#dropBtn').on('click', function() {
     $('.dropdown').toggleClass('is-active')    
 })
