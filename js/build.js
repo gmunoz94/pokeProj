@@ -24,6 +24,7 @@ $('#dropList').click(function(event){
     $('#moveAcc').html('')
     $('#movePP').html('')
     $('#movePower').html('')
+    $('#moveFlavor').html('')
     $('.dropdown').toggleClass('is-active')   
     var element = event.target
     // $('#moveName').append('move: ' + element.textContent)
@@ -36,19 +37,25 @@ $('#dropList').click(function(event){
             method:"GET"
         })
         .then(function(response){
+            console.log(response)
             var moveName = response.name
             var moveAcc = response.accuracy
             var movePP = response.pp
             var movePower = response.power
+            moveFlavor = response['flavor_text_entries'][1].flavor_text
             $('#moveName').append('Name: ' + moveName)
             $('#moveAcc').append('Accuracy: ' + moveAcc)
             $('#movePP').append('PP: ' + movePP)
             $('#movePower').append('Power: ' + movePower)
+            $('#moveFlavor').append(moveFlavor)
             console.log(moveAcc)
         }     
        )
     }
 });
+
+var moveFlavor
+
 var fullmove1 = [] 
 $('#setmove1').on('click',function(){
     $('#move1').html('')
@@ -61,7 +68,7 @@ $('#setmove1').on('click',function(){
     $('#move1').append(setPP)
     $('#move1').append(setPower)
     console.log($('#moveName').text())
-    fullmove1 = [setName.text(),setAcc.text(),setPP.text(),setPower.text()]
+    fullmove1 = [setName.text(),setAcc.text(),setPP.text(),setPower.text(), moveFlavor]
 })
 var fullmove2 = []
 $('#setmove2').on('click',function(){

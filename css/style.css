@@ -48,7 +48,7 @@ h3 {
 
 .card {
     width: 300px;
-    height: 425px;
+    height: 525px;
 }
 
 .card-header{
@@ -71,4 +71,14 @@ span {
 h4 {
     font-weight: bolder;
     font-size: larger;
+}
+
+#moveName {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#moveFlavor {
+    font-size: larger;
+    font-weight: bolder;
 }
