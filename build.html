@@ -29,9 +29,9 @@
             </div>
         </div>
     </nav>
-    <div class="section is-medium">
     <div class="columns is-centered">
         <div class="column is-three-fifths has-text-centered">
+            <div class="section">
             <div class="field">
                 <div class="control is-medium is-flex flex-direction-row">
                   <input class="input is-medium m-2" type="text" placeholder="Name your Pokemon" id="nickname">
@@ -40,10 +40,27 @@
                 </div>
             </div>
             <h3 id="pokenick"></h3>
-            <img id="pokeImg" src=""/>
+            <img id="buildImg" src=""/>
+            </div>
+            <div class="section is-flex is-flex-wrap-wrap is-centered">
+                <div class="column is-half is-flex justify-content-center">
+                    <div id="move1" class="box moveBox">
+                    </div>
+                </div>
+                <div class="column is-half is-flex justify-content-center">
+                    <div id="move2" class="box moveBox"></div>
+                </div>
+                <div class="column is-half is-flex justify-content-center">
+                    <div id="move3" class="box moveBox"></div>
+                </div>
+                <div class="column is-half is-flex justify-content-center">
+                    <div id="move4" class="box moveBox"></div>
+                </div>
+            </div>
         </div>
-        <!-- <div class="column is-one-fifth is-flex flex-direction-column">
-            <div class="card">
+        <div class="column is-one-fifth is-flex flex-direction-column">
+            <div class="section">
+            <div class="card is-flex align-items-center">
                 <header class="card-header">Choose Your Moveset</header>
                 <div class="dropdown">
                     <div class="dropdown-trigger">
@@ -56,22 +73,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-content ">
-                    <div id="moveName" class="content">tackle
-                    </div>
-                    <div id="moveAcc" class="content">85</div>
-                    <div id="movePP" class="content">10</div>
-                    <div id="movePower" class="content">120</div>
+                <div class="card-content align-self-start">
+                    <div id="moveName" class="content"></div>
+                    <div id="moveAcc" class="content"></div>
+                    <div id="movePP" class="content"></div>
+                    <div id="movePower" class="content"></div>
                 </div>
                 <footer class="card-footer">
-                    <a class="card-footer-item">Move 1</a>
-                    <a class="card-footer-item">Move 2</a>
-                    <a class="card-footer-item">Move 3</a>
-                    <a class="card-footer-item">Move 4</a>
+                    <button id="setmove1" class="card-footer-item">Set Move 1</button>
+                    <button id="setmove2" class="card-footer-item">Set Move 2</button>
+                    <button id="setmove3" class="card-footer-item">Set Move 3</button>
+                    <button id="setmove4" class="card-footer-item">Set Move 4</button>
                 </footer>
             </div>
-        </div> -->
-    </div>
+        </div>
+        </div>
     </div>
     </div>  
     <div class="modal">

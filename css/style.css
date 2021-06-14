@@ -27,6 +27,11 @@ h3 {
     width: 75px;
 }
 
+#buildImg {
+    height: 325px;
+    width: 325px;
+}
+
 .nickname {
     font-size: 40px;
     line-height: 75px;
@@ -43,6 +48,11 @@ h3 {
 
 .card {
     width: 300px;
+    height: 425px;
+}
+
+.card-header{
+    width: 300px;
 }
 
 .card-footer {
@@ -52,4 +62,8 @@ h3 {
 
 span {
     font-size: 30px;
+}
+
+.moveBox {
+    width: 300px;
 }
