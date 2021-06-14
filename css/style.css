@@ -67,3 +67,8 @@ span {
 .moveBox {
     width: 300px;
 }
+
+h4 {
+    font-weight: bolder;
+    font-size: larger;
+}
