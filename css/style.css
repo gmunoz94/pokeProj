@@ -82,3 +82,8 @@ h4 {
     font-size: larger;
     font-weight: bolder;
 }
+
+.latMove {
+    height: 144px;
+    border: #343a40 solid 3px;
+}

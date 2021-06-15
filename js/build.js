@@ -42,7 +42,16 @@ $('#dropList').click(function(event){
             var moveAcc = response.accuracy
             var movePP = response.pp
             var movePower = response.power
-            moveFlavor = response['flavor_text_entries'][1].flavor_text
+            function findflavor(){
+            for (var j = 0;j < response['flavor_text_entries'].length; j++) {
+                if(response['flavor_text_entries'][j].language.name === "en"){
+                    return response['flavor_text_entries'][j]
+                }
+            }
+        }
+            var flavorfind = findflavor()
+            moveFlavor = flavorfind['flavor_text']
+            console.log(moveFlavor)
             $('#moveName').append('Name: ' + moveName)
             $('#moveAcc').append('Accuracy: ' + moveAcc)
             $('#movePP').append('PP: ' + movePP)
@@ -53,9 +62,7 @@ $('#dropList').click(function(event){
        )
     }
 });
-
 var moveFlavor
-
 var fullmove1 = [] 
 $('#setmove1').on('click',function(){
     $('#move1').html('')
@@ -82,7 +89,7 @@ $('#setmove2').on('click',function(){
     $('#move2').append(setPP)
     $('#move2').append(setPower)
     console.log($('#moveName').text())
-    fullmove2 = [setName.text(),setAcc.text(),setPP.text(),setPower.text()]
+    fullmove2 = [setName.text(),setAcc.text(),setPP.text(),setPower.text(),moveFlavor]
 })
 var fullmove3 = []
 $('#setmove3').on('click',function(){
@@ -96,7 +103,7 @@ $('#setmove3').on('click',function(){
     $('#move3').append(setPP)
     $('#move3').append(setPower)
     console.log($('#moveName').text())
-    fullmove3 = [setName.text(),setAcc.text(),setPP.text(),setPower.text()]
+    fullmove3 = [setName.text(),setAcc.text(),setPP.text(),setPower.text(),moveFlavor]
 })
 var fullmove4 = []
 $('#setmove4').on('click',function(){
@@ -110,7 +117,7 @@ $('#setmove4').on('click',function(){
     $('#move4').append(setPP)
     $('#move4').append(setPower)
     console.log($('#moveName').text())
-    fullmove4 = [setName.text(),setAcc.text(),setPP.text(),setPower.text()]
+    fullmove4 = [setName.text(),setAcc.text(),setPP.text(),setPower.text(),moveFlavor]
     console.log(fullmove4)
 })
 function nickval() {
